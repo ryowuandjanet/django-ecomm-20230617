@@ -388,14 +388,14 @@ def add_to_cart(request, slug):
             return redirect("core:order-summary")
         else:
             order.items.add(order_item)
-            messages.info(request, "This item was added to your cart.")
+            messages.info(request, "該商品已添加到您的購物車。")
             return redirect("core:order-summary")
     else:
         ordered_date = timezone.now()
         order = Order.objects.create(
             user=request.user, ordered_date=ordered_date)
         order.items.add(order_item)
-        messages.info(request, "This item was added to your cart.")
+        messages.info(request, "該商品已添加到您的購物車。")
         return redirect("core:order-summary")
 
 
